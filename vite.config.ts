@@ -17,8 +17,6 @@ export default defineConfig({
       "@": resolve(__dirname, "./src"),
     },
   },
-  base:
-    process.env.GITHUB_PAGES_CUSTOM_DOMAIN === "true" ? "/" : "/screensaverso/",
   build: {
     outDir: "dist",
     assetsDir: "assets",

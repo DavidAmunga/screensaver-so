@@ -52,7 +52,7 @@ function ScreensaverSo() {
               </div>
               <div>
                 <div className="font-medium text-black">Size</div>
-                <div>2.1 MB</div>
+                <div>494 KB</div>
               </div>
             </div>
           </div>
@@ -60,8 +60,8 @@ function ScreensaverSo() {
             className="bg-black cursor-pointer text-white hover:bg-gray-800 px-8 py-3"
             onClick={() => {
               const link = document.createElement("a");
-              link.href = "#";
-              link.download = "/ChalkTime-macOS.saver";
+              link.href = "/files/ChalkTime-macOS.saver.zip";
+              link.download = "ChalkTime-macOS.saver.zip";
               link.click();
             }}
           >
