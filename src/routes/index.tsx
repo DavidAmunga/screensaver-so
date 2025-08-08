@@ -66,7 +66,7 @@ function ScreensaverSo() {
             }}
           >
             <Download className="w-4 h-4 mr-2" />
-            Download for Mac
+            Download for Mac (Apple Silicon)
           </Button>
         </div>
 
