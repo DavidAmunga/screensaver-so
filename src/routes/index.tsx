@@ -60,8 +60,8 @@ function ScreensaverSo() {
             className="bg-black cursor-pointer text-white hover:bg-gray-800 px-8 py-3"
             onClick={() => {
               const link = document.createElement("a");
-              link.href = "/files/ChalkTime.saver";
-              link.download = "ChalkTime.saver";
+              link.href = "/files/ChalkTime-macOS.saver.zip";
+              link.download = "ChalkTime-macOS.saver.zip";
               link.click();
             }}
           >
