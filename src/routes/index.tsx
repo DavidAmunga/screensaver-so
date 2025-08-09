@@ -60,13 +60,13 @@ function ScreensaverSo() {
             className="bg-black cursor-pointer text-white hover:bg-gray-800 px-8 py-3"
             onClick={() => {
               const link = document.createElement("a");
-              link.href = "/files/ChalkTime-macOS.saver.zip";
-              link.download = "ChalkTime-macOS.saver.zip";
+              link.href = "/files/ChalkTime.saver";
+              link.download = "ChalkTime.saver";
               link.click();
             }}
           >
             <Download className="w-4 h-4 mr-2" />
-            Download for Mac (Apple Silicon)
+            Download for Mac
           </Button>
         </div>
 

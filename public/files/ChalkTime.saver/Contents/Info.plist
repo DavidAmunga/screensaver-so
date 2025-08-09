@@ -6,6 +6,8 @@
 	<string>24G84</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>ChalkTime</string>
 	<key>CFBundleExecutable</key>
 	<string>ChalkTime</string>
 	<key>CFBundleIdentifier</key>
@@ -41,7 +43,7 @@
 	<key>DTXcodeBuild</key>
 	<string>16C5032a</string>
 	<key>LSMinimumSystemVersion</key>
-	<string>15.0</string>
+	<string>11.5</string>
 	<key>NSPrincipalClass</key>
 	<string>ChalkTime.ChalkTimeView</string>
 </dict>
