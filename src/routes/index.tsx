@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
-import { Download, ChevronRight, Apple, MonitorSpeaker } from "lucide-react";
+import { Download, ChevronRight, MonitorSpeaker } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   component: ScreensaverSo,
