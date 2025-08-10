@@ -103,8 +103,8 @@ function ScreensaverSo() {
                   className="bg-blue-600 cursor-pointer hover:bg-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-full transition-all duration-200 transform hover:scale-105 w-full sm:w-auto"
                   onClick={() => {
                     const link = document.createElement("a");
-                    link.href = "/files/ChalkTime-macOS.saver.zip";
-                    link.download = "ChalkTime-macOS.saver.zip";
+                    link.href = "/files/ChalkTime-v1.0.1.2.zip";
+                    link.download = "ChalkTime-v1.0.1.2.zip";
                     link.click();
                   }}
                 >
@@ -146,10 +146,7 @@ function ScreensaverSo() {
                 }}
               >
                 {/* Chalk overlay content */}
-                <div
-                  className="absolute inset-0 flex flex-col items-center justify-center text-white"
-                  style={{ fontFamily: "Comic Sans MS, cursive" }}
-                >
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-white chalk-text">
                   <div className="text-center">
                     <div className="text-base sm:text-xl md:text-2xl lg:text-4xl font-bold mb-2 lg:mb-3 opacity-90">
                       {dayName} {day} {monthName}, {year}
