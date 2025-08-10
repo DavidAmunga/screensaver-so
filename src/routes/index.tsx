@@ -115,7 +115,7 @@ function ScreensaverSo() {
                   Free download • No registration required • macOS 11.7.10+
                 </p>
                 <p className="pt-2 italic text-xs sm:text-sm text-gray-500">
-                  Rated none yet , but my mum likes it.
+                  Rated nothing yet , but my mum likes it. so i hope you do too.
                 </p>
               </div>
 
