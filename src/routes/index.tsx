@@ -1,37 +1,62 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { Download, ChevronRight, MonitorSpeaker } from "lucide-react";
+import { useState, useEffect } from "react";
+import { FaApple, FaWindows } from "react-icons/fa6";
 
 export const Route = createFileRoute("/")({
   component: ScreensaverSo,
 });
 
-function ScreensaverSo() {
-  const currentDate = new Date();
-  const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  const months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
+type OSType = "mac" | "windows";
 
-  const dayName = days[currentDate.getDay()];
-  const day = currentDate.getDate();
-  const monthName = months[currentDate.getMonth()];
-  const year = currentDate.getFullYear();
-  const hours = currentDate.getHours();
-  const minutes = currentDate.getMinutes().toString().padStart(2, "0");
-  const ampm = hours >= 12 ? "PM" : "AM";
-  const displayHours = (hours % 12 || 12).toString().padStart(2, " ");
+function ScreensaverSo() {
+  const [detectedOS, setDetectedOS] = useState<OSType>("windows");
+
+  // Detect user's operating system
+  useEffect(() => {
+    const userAgent = navigator.userAgent.toLowerCase();
+    if (userAgent.includes("mac")) {
+      setDetectedOS("mac");
+    } else {
+      setDetectedOS("windows"); // Default to Windows for all other OS (including Linux)
+    }
+  }, []);
+
+  // OS-specific configuration
+  const osConfig: Record<
+    OSType,
+    {
+      downloadFile: string;
+      downloadName: string;
+      buttonText: string;
+      description: string;
+      screenshot: string;
+      productName: string;
+      icon: React.ReactNode;
+    }
+  > = {
+    mac: {
+      downloadFile: "/files/ChalkTime-v1.0.1.2.zip",
+      downloadName: "ChalkTime-v1.0.1.2.zip",
+      buttonText: "Download for Mac",
+      description: "Free download • No registration required • macOS 11.7.10+",
+      screenshot: "/screen-mac.png",
+      productName: "Elegant chalk-style clock screensaver for Mac",
+      icon: <FaApple />,
+    },
+    windows: {
+      downloadFile: "/files/ChalkTime-Windows-Portable.zip",
+      downloadName: "ChalkTime-Windows-Portable.zip",
+      buttonText: "Download for Windows",
+      description: "Free download • No registration required • Windows 10+",
+      screenshot: "/screen-windows.png",
+      productName: "Elegant chalk-style clock screensaver for Windows",
+      icon: <FaWindows />,
+    },
+  };
+
+  const currentConfig = osConfig[detectedOS];
 
   return (
     <div className="h-screen bg-stone-100 overflow-hidden">
@@ -64,7 +89,7 @@ function ScreensaverSo() {
                   ChalkTime
                 </h1>
                 <p className="text-lg sm:text-xl text-gray-600 mb-6">
-                  Elegant chalk-style clock screensaver for Mac
+                  {currentConfig.productName}
                 </p>
               </div>
 
@@ -103,16 +128,16 @@ function ScreensaverSo() {
                   className="bg-blue-600 cursor-pointer hover:bg-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-full transition-all duration-200 transform hover:scale-105 w-full sm:w-auto"
                   onClick={() => {
                     const link = document.createElement("a");
-                    link.href = "/files/ChalkTime-v1.0.1.2.zip";
-                    link.download = "ChalkTime-v1.0.1.2.zip";
+                    link.href = currentConfig.downloadFile;
+                    link.download = currentConfig.downloadName;
                     link.click();
                   }}
                 >
-                  <Download className="w-5 h-5 mr-2" />
-                  Download for Mac
+                  {currentConfig.icon}
+                  {currentConfig.buttonText}
                 </Button>
                 <p className="text-xs sm:text-sm text-gray-500">
-                  Free download • No registration required • macOS 11.7.10+
+                  {currentConfig.description}
                 </p>
                 <p className="pt-2 italic text-xs sm:text-sm text-gray-500">
                   Rated nothing yet , but my mum likes it. so i hope you do too.
@@ -136,31 +161,12 @@ function ScreensaverSo() {
 
             {/* Right Column - ChalkTime Preview */}
             <div className="relative flex-1 w-full max-w-2xl mx-auto lg:mx-0 md:mx-auto">
-              <div
-                className="aspect-[4/3] relative mx-auto w-full max-w-md sm:max-w-lg lg:max-w-none"
-                style={{
-                  backgroundImage: "url(/background.webp)",
-                  backgroundSize: "contain",
-                  backgroundPosition: "center",
-                  backgroundRepeat: "no-repeat",
-                }}
-              >
-                {/* Chalk overlay content */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-white chalk-text">
-                  <div className="text-center">
-                    <div className="text-base sm:text-xl md:text-2xl lg:text-4xl font-bold mb-2 lg:mb-3 opacity-90">
-                      {dayName} {day} {monthName}, {year}
-                    </div>
-                    <div className="relative font-bold mb-2 ">
-                      <div className="text-8xl sm:text-4xl md:text-6xl lg:text-[140px] font-bold mb-2">
-                        {displayHours}:{minutes}
-                      </div>
-                      <div className="absolute text-xs top-3 -right-5 sm:top-0 sm:right-0 md:-right-6 md:top-0 md:text-2xl lg:top-3 lg:-right-17 lg:text-5xl font-bold opacity-90">
-                        {ampm}
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div className="aspect-[4/3] relative mx-auto w-full max-w-md sm:max-w-lg lg:max-w-none">
+                <img
+                  src={currentConfig.screenshot}
+                  alt={`ChalkTime screensaver on ${detectedOS === "mac" ? "Mac" : "Windows"}`}
+                  className="w-full h-full object-contain "
+                />
               </div>
             </div>
           </div>
