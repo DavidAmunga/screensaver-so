@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
-import { Download, ChevronRight, MonitorSpeaker } from "lucide-react";
+import {  ChevronRight, MonitorSpeaker } from "lucide-react";
 import { useState, useEffect } from "react";
 import { FaApple, FaWindows } from "react-icons/fa6";
 
