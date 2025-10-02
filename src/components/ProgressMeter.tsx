@@ -4,12 +4,12 @@ import { FaApple } from "react-icons/fa6";
 
 export function ProgressMeter() {
   const config = {
-    downloadFile: "/files/ProgressMeter-v1.0.1.2.zip",
-    downloadName: "ProgressMeter-v1.0.1.2.zip",
+    downloadFile: "/files/ProgressMeter-v1.0.2.zip",
+    downloadName: "ProgressMeter-v1.0.2.zip",
     buttonText: "Download for Mac",
     description: "Free download • No registration required • macOS 11.7.10+",
     screenshot: "/progressmeter-screen-mac.png",
-    productName: "Motivational progress bar screensaver for Mac",
+    productName: "Motivational Progress bar screensaver for Mac",
     icon: <FaApple />,
   };
 
@@ -42,7 +42,7 @@ export function ProgressMeter() {
                 <MonitorSpeaker className="w-3 h-3 text-blue-600" />
               </div>
               <span className="text-sm sm:text-base text-gray-700">
-                Motivational display
+                Switch between Full Day & Work Day
               </span>
             </div>
             <div className="flex items-center justify-center lg:justify-start space-x-3">
