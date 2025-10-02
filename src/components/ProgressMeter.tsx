@@ -4,8 +4,8 @@ import { FaApple } from "react-icons/fa6";
 
 export function ProgressMeter() {
   const config = {
-    downloadFile: "/files/ProgressMeter-v1.0.2.zip",
-    downloadName: "ProgressMeter-v1.0.2.zip",
+    downloadFile: "/files/ProgressMeter-v1.1.0.zip",
+    downloadName: "ProgressMeter-v1.1.0.zip",
     buttonText: "Download for Mac",
     description: "Free download • No registration required • macOS 11.7.10+",
     screenshot: "/progressmeter-screen-mac.png",
