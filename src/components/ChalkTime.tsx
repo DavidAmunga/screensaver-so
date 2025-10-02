@@ -1,48 +1,22 @@
 import { Button } from "@/components/ui/button";
 import { ChevronRight, MonitorSpeaker } from "lucide-react";
-import { FaApple, FaWindows } from "react-icons/fa6";
-
-type OSType = "mac" | "windows";
+import { FaApple } from "react-icons/fa6";
 
 interface ChalkTimeProps {
-  detectedOS: OSType;
+  detectedOS?: string; // Not used anymore, keeping for compatibility
 }
 
-export function ChalkTime({ detectedOS }: ChalkTimeProps) {
-  // OS-specific configuration for ChalkTime
-  const osConfig: Record<
-    OSType,
-    {
-      downloadFile: string;
-      downloadName: string;
-      buttonText: string;
-      description: string;
-      screenshot: string;
-      productName: string;
-      icon: React.ReactNode;
-    }
-  > = {
-    mac: {
-      downloadFile: "/files/ChalkTime-v1.0.1.2.zip",
-      downloadName: "ChalkTime-v1.0.1.2.zip",
-      buttonText: "Download for Mac",
-      description: "Free download • No registration required • macOS 11.7.10+",
-      screenshot: "/chalktime-screen-mac.png",
-      productName: "Elegant chalk-style clock screensaver for Mac",
-      icon: <FaApple />,
-    },
-    windows: {
-      downloadFile: "/files/ChalkTime-Windows-Portable.zip",
-      downloadName: "ChalkTime-Windows-Portable.zip",
-      buttonText: "Download for Windows",
-      description: "Free download • No registration required • Windows 10+",
-      screenshot: "/chalktime-screen-windows.png",
-      productName: "Elegant chalk-style clock screensaver for Windows",
-      icon: <FaWindows />,
-    },
+export function ChalkTime({}: ChalkTimeProps) {
+  // Only Mac is supported while Windows is in development
+  const macConfig = {
+    downloadFile: "/files/ChalkTime-v1.0.1.2.zip",
+    downloadName: "ChalkTime-v1.0.1.2.zip",
+    buttonText: "Download for Mac",
+    description: "Free download • No registration required • macOS 11.7.10+",
+    screenshot: "/chalktime-screen-mac.png",
+    productName: "Elegant chalk-style clock screensaver for Mac",
+    icon: <FaApple />,
   };
-
-  const currentConfig = osConfig[detectedOS];
 
   return (
     <div className="bg-white rounded-2xl shadow-lg p-6 lg:p-8">
@@ -54,7 +28,7 @@ export function ChalkTime({ detectedOS }: ChalkTimeProps) {
               ChalkTime
             </h2>
             <p className="text-base sm:text-lg text-gray-600 mb-6">
-              {currentConfig.productName}
+              {macConfig.productName}
             </p>
           </div>
 
@@ -93,16 +67,16 @@ export function ChalkTime({ detectedOS }: ChalkTimeProps) {
               className="bg-blue-600 cursor-pointer hover:bg-blue-700 text-white px-6 sm:px-8 py-3 text-base rounded-full transition-all duration-200 transform hover:scale-105 w-full sm:w-auto"
               onClick={() => {
                 const link = document.createElement("a");
-                link.href = currentConfig.downloadFile;
-                link.download = currentConfig.downloadName;
+                link.href = macConfig.downloadFile;
+                link.download = macConfig.downloadName;
                 link.click();
               }}
             >
-              {currentConfig.icon}
-              <span className="ml-2">{currentConfig.buttonText}</span>
+              {macConfig.icon}
+              <span className="ml-2">{macConfig.buttonText}</span>
             </Button>
             <p className="text-xs sm:text-sm text-gray-500">
-              {currentConfig.description}
+              {macConfig.description}
             </p>
           </div>
         </div>
@@ -111,8 +85,8 @@ export function ChalkTime({ detectedOS }: ChalkTimeProps) {
         <div className="relative flex-1 w-full max-w-lg mx-auto lg:mx-0">
           <div className="aspect-[4/3] relative">
             <img
-              src={currentConfig.screenshot}
-              alt={`ChalkTime screensaver on ${detectedOS === "mac" ? "Mac" : "Windows"}`}
+              src={macConfig.screenshot}
+              alt="ChalkTime screensaver on Mac"
               className="w-full h-full object-contain rounded-lg"
             />
           </div>
